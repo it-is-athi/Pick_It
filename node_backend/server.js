@@ -4,6 +4,7 @@ require('dotenv').config()
 // Step 2: Import Express
 const express = require('express')
 const session = require('express-session')
+const cors = require('cors')
 
 // Step 3: Import Database
 const db = require('./config/database')
@@ -19,6 +20,12 @@ const app = express()
 // Step 6: Middleware - Parse JSON requests
 app.use(express.json())
 
+// Step 6b: Middleware - Enable CORS
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true
+}))
+
 // Step 7: Middleware - Configure Sessions
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -26,6 +33,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: false,
+        httpOnly: true,
+        sameSite: 'lax',
         maxAge: 1000 * 60 * 60 * 2 // 2 hours in milliseconds
     }
 }))

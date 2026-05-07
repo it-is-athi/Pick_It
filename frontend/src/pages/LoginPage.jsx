@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import '../styles/LoginPage.css'
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 function LoginPage({ onLogin }) {
   const [isRegistering, setIsRegistering] = useState(false)
   const [username, setUsername] = useState('')
@@ -20,7 +22,7 @@ function LoginPage({ onLogin }) {
         ? { username, password, role }
         : { username, password }
 
-      const response = await fetch(`http://localhost:3000${endpoint}`, {
+      const response = await fetch(`${BACKEND_URL}${endpoint}`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

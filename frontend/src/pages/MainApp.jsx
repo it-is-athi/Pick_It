@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import '../styles/MainApp.css'
 
-function MainApp({ user, onLogout }) {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
+function MainApp({ user, onLogout, onGoToEditor }) {
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [quotes, setQuotes] = useState([])
@@ -16,7 +18,7 @@ function MainApp({ user, onLogout }) {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:3000/categories', {
+      const response = await fetch(`${BACKEND_URL}/categories`, {
         credentials: 'include'
       })
       const data = await response.json()
@@ -32,7 +34,7 @@ function MainApp({ user, onLogout }) {
     setLoading(true)
     setError('')
     try {
-      const response = await fetch(`http://localhost:3000/quotes/categories/${categoryId}/quotes`, {
+      const response = await fetch(`${BACKEND_URL}/quotes/categories/${categoryId}/quotes`, {
         credentials: 'include'
       })
       const data = await response.json()
@@ -52,7 +54,7 @@ function MainApp({ user, onLogout }) {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://localhost:3000/auth/logout', {
+      await fetch(`${BACKEND_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       })
@@ -68,6 +70,11 @@ function MainApp({ user, onLogout }) {
         <h1>🎯 Quote Picker</h1>
         <div className="user-info">
           <span>{user.username} ({user.role})</span>
+          {user.role === 'editor' && (
+            <button onClick={onGoToEditor} className="editor-btn">
+              ✏️ Editor Mode
+            </button>
+          )}
           <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
       </header>

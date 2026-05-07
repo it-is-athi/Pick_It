@@ -10,6 +10,8 @@ const db = require('./config/database')
 
 // Step 4: Import Routes
 const authRoutes = require('./routes/authRoutes')
+const quoteRoutes = require('./routes/quoteRoutes')
+const categoryRoutes = require('./routes/categoryRoutes')
 
 // Step 5: Create an Express app
 const app = express()
@@ -28,12 +30,14 @@ app.use(session({
     }
 }))
 
-// Step 8: Use Auth Routes
+// Step 8: Use Routes
 app.use('/auth', authRoutes)
+app.use('/quotes', quoteRoutes)
+app.use('/categories', categoryRoutes)
 
-// Step 9: Test route - when someone visits http://localhost:3000/
+// Step 9: Test route
 app.get('/', (req, res) => {
-    res.send('Hello from backend!')
+    res.send('Welcome to Quote Picker API!')
 })
 
 // Step 10: Start the server

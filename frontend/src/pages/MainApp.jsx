@@ -1,3 +1,4 @@
+// MainApp.jsx - Main viewer interface for users to select categories and view quotes
 import { useState, useEffect } from 'react'
 import '../styles/MainApp.css'
 

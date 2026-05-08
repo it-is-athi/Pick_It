@@ -67,21 +67,21 @@ function MainApp({ user, onLogout, onGoToEditor }) {
   return (
     <div className="main-app">
       <header className="header">
-        <h1>🎯 Quote Picker</h1>
+        <span className="user-greeting">Deeeiiii <span className="username-highlight">{user.username}</span></span>
+        <h1>❤️ Pick One Today</h1>
         <div className="user-info">
-          <span>{user.username} ({user.role})</span>
           {user.role === 'editor' && (
             <button onClick={onGoToEditor} className="editor-btn">
               ✏️ Editor Mode
             </button>
           )}
-          <button onClick={handleLogout} className="logout-btn">Logout</button>
+          <button onClick={handleLogout} className="logout-btn">Bye di</button>
         </div>
       </header>
 
       <div className="container">
         <div className="categories-section">
-          <h2>Categories</h2>
+          <h2>How are you feeling right now nga???</h2>
           <div className="categories-grid">
             {categories.map(cat => (
               <button
@@ -99,7 +99,7 @@ function MainApp({ user, onLogout, onGoToEditor }) {
 
         {selectedCategory && (
           <div className="quotes-section">
-            <h2>Quotes in Category</h2>
+            <h2>Athi's Reply :</h2>
             {loading ? (
               <p>Loading...</p>
             ) : randomQuote ? (
@@ -110,14 +110,6 @@ function MainApp({ user, onLogout, onGoToEditor }) {
               </div>
             ) : (
               <p>No quotes in this category yet</p>
-            )}
-
-            {user.role === 'editor' && (
-              <div className="editor-section">
-                <h3>Add New Quote</h3>
-                <input type="text" placeholder="Enter quote..." className="quote-input" />
-                <button className="add-btn">Add Quote</button>
-              </div>
             )}
           </div>
         )}

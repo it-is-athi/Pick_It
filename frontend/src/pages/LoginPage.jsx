@@ -4,10 +4,8 @@ import '../styles/LoginPage.css'
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function LoginPage({ onLogin }) {
-  const [isRegistering, setIsRegistering] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('viewer')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -17,16 +15,11 @@ function LoginPage({ onLogin }) {
     setLoading(true)
 
     try {
-      const endpoint = isRegistering ? '/auth/register' : '/auth/login'
-      const body = isRegistering 
-        ? { username, password, role }
-        : { username, password }
-
-      const response = await fetch(`${BACKEND_URL}${endpoint}`, {
+      const response = await fetch(`${BACKEND_URL}/auth/login`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        body: JSON.stringify({ username, password })
       })
 
       const data = await response.json()
@@ -49,8 +42,8 @@ function LoginPage({ onLogin }) {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h1>Quote Picker 💭</h1>
-        <h2>{isRegistering ? 'Create Account' : 'Login'}</h2>
+        <h1>Anneyonghaseyo pravithshii</h1>
+        <h2>Enter your credentials</h2>
         
         <form onSubmit={handleSubmit}>
           <input
@@ -71,37 +64,12 @@ function LoginPage({ onLogin }) {
             disabled={loading}
           />
 
-          {isRegistering && (
-            <select 
-              value={role} 
-              onChange={(e) => setRole(e.target.value)}
-              disabled={loading}
-            >
-              <option value="viewer">Viewer (Read Only)</option>
-              <option value="editor">Editor (Can Add/Edit)</option>
-            </select>
-          )}
-
           {error && <p className="error">{error}</p>}
 
           <button type="submit" disabled={loading}>
-            {loading ? 'Loading...' : (isRegistering ? 'Register' : 'Login')}
+            {loading ? 'Loading...' : 'Login'}
           </button>
         </form>
-
-        <p className="toggle">
-          {isRegistering ? 'Already have an account? ' : "Don't have an account? "}
-          <button
-            type="button"
-            onClick={() => {
-              setIsRegistering(!isRegistering)
-              setError('')
-            }}
-            disabled={loading}
-          >
-            {isRegistering ? 'Login' : 'Register'}
-          </button>
-        </p>
       </div>
     </div>
   )

@@ -1,26 +1,26 @@
-/* MainApp.css - Galaxy Theme */
+/* MainApp.css - Pure Black Galaxy Theme with Purple */
 
 :root {
-  --primary-purple: #667eea;
-  --dark-purple: #764ba2;
-  --light-purple: #8b9ff4;
-  --dark-bg: #0a0e27;
-  --glass-bg: rgba(102, 126, 234, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.18);
+  --primary-purple: #9d4edd;
+  --dark-purple: #5a189a;
+  --light-purple: #c77dff;
+  --lighter-purple: #e0aaff;
+  --glass-bg: rgba(102, 50, 170, 0.08);
+  --glass-border: rgba(157, 78, 221, 0.2);
   --text-light: #e0e0e0;
   --text-muted: #a0a0a0;
 }
 
 .main-app {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f4b 50%, var(--dark-purple) 100%);
+  background: #000000;
   background-attachment: fixed;
   position: relative;
   overflow-x: hidden;
   color: var(--text-light);
 }
 
-/* Animated background stars */
+/* Animated twinkling stars background */
 .main-app::before {
   content: '';
   position: fixed;
@@ -29,21 +29,25 @@
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 60px 70px, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(1px 1px at 50px 50px, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(1px 1px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 90px 10px, #fff, rgba(0, 0, 0, 0));
+    radial-gradient(1px 1px at 10px 20px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 40px 60px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 50px 50px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 90px 10px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 20px 120px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 110px 140px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 160px 30px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 80px 120px, #fff, rgba(0, 0, 0, 0));
   background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: twinkle 5s infinite;
+  background-size: 150px 150px;
+  animation: twinkle 6s infinite;
   pointer-events: none;
   z-index: 0;
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
 .main-app > * {
@@ -60,8 +64,9 @@
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.1);
   animation: slideDown 0.6s ease-out;
+  gap: 2rem;
 }
 
 @keyframes slideDown {
@@ -78,7 +83,27 @@
 .header h1 {
   margin: 0;
   font-size: 2rem;
-  background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+  background: linear-gradient(135deg, var(--light-purple), var(--lighter-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  flex: 1;
+  text-align: center;
+}
+
+.header .user-greeting {
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  flex: 0 1 auto;
+}
+
+.username-highlight {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--light-purple), var(--lighter-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -87,11 +112,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-
-.user-info span {
-  color: var(--text-muted);
-  font-weight: 500;
+  flex: 0 1 auto;
 }
 
 .editor-btn,
@@ -102,28 +123,27 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
 }
 
 .editor-btn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
   color: white;
 }
 
 .editor-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 6px 25px rgba(157, 78, 221, 0.5);
 }
 
 .logout-btn {
-  background: rgba(255, 0, 0, 0.2);
-  color: #ff6b6b;
-  border: 1px solid rgba(255, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(192, 132, 250, 0.2));
+  color: var(--light-purple);
+  border: 1px solid var(--glass-border);
 }
 
 .logout-btn:hover {
-  background: rgba(255, 0, 0, 0.3);
-  border-color: #ff6b6b;
+  background: linear-gradient(135deg, var(--primary-purple), rgba(157, 78, 221, 0.5));
   transform: translateY(-2px);
 }
 
@@ -165,7 +185,7 @@
 
 .category-btn {
   padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.15), rgba(90, 24, 154, 0.15));
   border: 1px solid var(--glass-border);
   border-radius: 15px;
   color: var(--text-light);
@@ -178,14 +198,14 @@
 
 .category-btn:hover {
   transform: translateY(-5px) scale(1.02);
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.25), rgba(90, 24, 154, 0.25));
+  box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
   border-color: var(--primary-purple);
 }
 
 .category-btn.active {
   background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 20px rgba(157, 78, 221, 0.4);
 }
 
 /* Quotes Section */
@@ -196,7 +216,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.1);
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -213,7 +233,7 @@
 }
 
 .quote-card {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(90, 24, 154, 0.2));
   border: 1px solid var(--glass-border);
   border-radius: 15px;
   padding: 2rem;
@@ -225,7 +245,7 @@
   font-style: italic;
   color: var(--light-purple);
   line-height: 1.8;
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 8px 25px rgba(157, 78, 221, 0.2);
 }
 
 /* Error Message */

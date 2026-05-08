@@ -1,19 +1,19 @@
-/* QuoteManagementPage.css - Galaxy Theme */
+/* QuoteManagementPage.css - Black Galaxy Theme */
 
 :root {
-  --primary-purple: #667eea;
-  --dark-purple: #764ba2;
-  --light-purple: #8b9ff4;
-  --dark-bg: #0a0e27;
-  --glass-bg: rgba(102, 126, 234, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.18);
+  --primary-purple: #9d4edd;
+  --dark-purple: #5a189a;
+  --light-purple: #c77dff;
+  --lighter-purple: #e0aaff;
+  --glass-bg: rgba(102, 50, 170, 0.08);
+  --glass-border: rgba(157, 78, 221, 0.2);
   --text-light: #e0e0e0;
   --text-muted: #a0a0a0;
 }
 
 .quote-management-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f4b 50%, var(--dark-purple) 100%);
+  background: #000000;
   background-attachment: fixed;
   position: relative;
   overflow-x: hidden;
@@ -29,19 +29,25 @@
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 60px 70px, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(1px 1px at 50px 50px, #fff, rgba(0, 0, 0, 0));
+    radial-gradient(1px 1px at 10px 20px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 40px 60px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 50px 50px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 90px 10px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 20px 120px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 110px 140px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 160px 30px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(0.5px 0.5px at 80px 120px, #fff, rgba(0, 0, 0, 0));
   background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: twinkle 5s infinite;
+  background-size: 150px 150px;
+  animation: twinkle 6s infinite;
   pointer-events: none;
   z-index: 0;
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
 .quote-management-page > * {
@@ -60,7 +66,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.1);
   animation: slideDown 0.6s ease-out;
 }
 
@@ -77,7 +83,7 @@
 
 .qm-header h1 {
   font-size: 1.8rem;
-  background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
+  background: linear-gradient(135deg, var(--light-purple), var(--lighter-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -87,35 +93,38 @@
 
 .btn-back {
   padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--glass-border);
-  color: var(--text-light);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(192, 132, 250, 0.2));
+  border: 1px solid var(--primary-purple);
+  color: var(--light-purple);
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(157, 78, 221, 0.2);
 }
 
 .btn-back:hover {
-  background: var(--primary-purple);
+  background: linear-gradient(135deg, var(--primary-purple), rgba(157, 78, 221, 0.5));
+  color: white;
   transform: translateX(-3px);
+  box-shadow: 0 6px 25px rgba(157, 78, 221, 0.4);
 }
 
 .btn-logout {
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(135deg, var(--dark-purple), var(--primary-purple));
+  background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
   color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
 }
 
 .btn-logout:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 6px 25px rgba(157, 78, 221, 0.5);
 }
 
 /* Sections */
@@ -126,7 +135,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.1);
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -170,7 +179,7 @@
   outline: none;
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--primary-purple);
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
 }
 
 .add-quote-section textarea::placeholder {
@@ -186,13 +195,13 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
   align-self: flex-start;
 }
 
 .add-quote-section button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 6px 25px rgba(157, 78, 221, 0.5);
 }
 
 .add-quote-section button:disabled {
@@ -210,7 +219,7 @@
 
 .quote-item {
   padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.15), rgba(90, 24, 154, 0.15));
   border: 1px solid var(--glass-border);
   border-radius: 15px;
   transition: all 0.3s ease;
@@ -218,8 +227,8 @@
 }
 
 .quote-item:hover {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.25), rgba(90, 24, 154, 0.25));
+  box-shadow: 0 8px 25px rgba(157, 78, 221, 0.2);
   transform: translateX(5px);
 }
 
@@ -249,7 +258,7 @@
   outline: none;
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--primary-purple);
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
 }
 
 /* Quote Actions */
@@ -272,7 +281,7 @@
 }
 
 .btn-edit:hover:not(:disabled) {
-  background: rgba(102, 126, 234, 0.3);
+  background: rgba(157, 78, 221, 0.3);
   border-color: var(--primary-purple);
   transform: translateY(-2px);
 }
@@ -309,7 +318,7 @@
 
 .quote-item .quote-actions button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
 }
 
 .quote-item .quote-actions button:last-child {

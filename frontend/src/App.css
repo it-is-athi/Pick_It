@@ -1,4 +1,15 @@
-/* App Styles */
+/* App Styles - Black Background with Twinkling Stars */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000000;
+  overflow-x: hidden;
+}
+
 .loading {
   display: flex;
   justify-content: center;
@@ -6,6 +17,7 @@
   min-height: 100vh;
   font-size: 24px;
   color: white;
+  background: #000000;
 }
 
 .container {

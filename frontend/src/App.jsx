@@ -53,6 +53,7 @@ function App() {
             setCurrentPage('quotes')
           }}
           onBackToEditor={() => setCurrentPage('editor')}
+          onGoToViewer={() => setCurrentPage('main')}
         />
       )
     } else if (currentPage === 'quotes') {

@@ -3,7 +3,7 @@ import '../styles/EditorPage.css'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
-function EditorPage({ user, onLogout, onSelectCategory, onBackToEditor }) {
+function EditorPage({ user, onLogout, onSelectCategory, onBackToEditor, onGoToViewer }) {
   const [categories, setCategories] = useState([])
   const [newCategoryName, setNewCategoryName] = useState('')
   const [loading, setLoading] = useState(false)
@@ -153,7 +153,8 @@ function EditorPage({ user, onLogout, onSelectCategory, onBackToEditor }) {
       <div className="editor-header">
         <h1>✨ Quote Editor Dashboard</h1>
         <div className="header-actions">
-          <span className="user-info">Welcome, {user.username}</span>
+          <span className="user-info">Welcome, <span className="username-highlight">{user.username}</span></span>
+          <button className="btn-viewer" onClick={onGoToViewer}>👁️ Viewer Mode</button>
           <button className="btn-logout" onClick={onLogout}>Logout</button>
         </div>
       </div>

@@ -7,7 +7,7 @@ Run:
 3. npm install express-session
 4. npm install dotenv
 5. npm install cors
-
+6. npm install node-cron
 
 # FRONTEND
 1. npm install

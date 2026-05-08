@@ -5,6 +5,7 @@ require('dotenv').config()
 const express = require('express')
 const session = require('express-session')
 const cors = require('cors')
+const cron = require('node-cron')
 
 // Step 3: Import Database
 const db = require('./config/database')
@@ -49,8 +50,26 @@ app.get('/', (req, res) => {
     res.send('Welcome to Quote Picker API!')
 })
 
+// Step 9b: Health check endpoint (for keep-alive pings)
+app.get('/health', (req, res) => {
+    res.json({ status: 'alive', timestamp: new Date(), message: 'Backend is running!' })
+})
+
 // Step 10: Start the server
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
+    console.log('Keep-alive job will start in 30 seconds...')
+    
+    // Step 10b: Self-ping every 5 minutes to prevent Render spin-down
+    setTimeout(() => {
+        cron.schedule('*/5 * * * *', () => {
+            const baseUrl = process.env.RENDER_EXTERNAL_URL || `http://localhost:${port}`
+            fetch(`${baseUrl}/health`)
+                .then(res => res.json())
+                .then(data => console.log(`✓ Keep-alive ping sent: ${data.timestamp}`))
+                .catch(err => console.log(`✗ Ping error: ${err.message}`))
+        })
+        console.log('✓ Keep-alive cron job started (pings every 5 minutes)')
+    }, 30000) // Start after 30 seconds
 })
